@@ -69,7 +69,5 @@ CREATE TABLE transport_services (
     FOREIGN KEY (reserve_id) REFERENCES reserves(reserve_id)
 );
 
-
-
-lokesh@bhaskars-MacBook-Pro db_project % 
+ 
 

@@ -1,0 +1,122 @@
+## Users Schema
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    password_hash TEXT NOT NULL,
+    role TEXT NOT NULL CHECK (role IN ('admin', 'operator', 'tourist'))
+);
+
+
+## Operators Schema
+CREATE TABLE operators (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL UNIQUE,
+    company_name TEXT NOT NULL,
+    license_number TEXT UNIQUE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+
+## Tourists Schema
+CREATE TABLE tourists (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL UNIQUE,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    country TEXT,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+
+## Roles Schema
+CREATE TABLE roles (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT UNIQUE NOT NULL
+);
+
+
+## Countries Schema
+CREATE TABLE countries (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL UNIQUE,
+    code TEXT NOT NULL UNIQUE CHECK (LENGTH(code) = 2 OR LENGTH(code) = 3)
+);
+
+
+
+## Tours Schema
+CREATE TABLE tours (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    operator_id INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    description TEXT,
+    country_id INTEGER,
+    start_date TEXT, -- SQLite uses TEXT for dates
+    end_date TEXT,
+    price REAL CHECK (price >= 0),
+    FOREIGN KEY (operator_id) REFERENCES operators(id) ON DELETE CASCADE,
+    FOREIGN KEY (country_id) REFERENCES countries(id) ON DELETE SET NULL
+);
+
+
+
+## Activities Schema
+CREATE TABLE activities (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    tour_id INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    description TEXT,
+    activity_date TEXT,
+    FOREIGN KEY (tour_id) REFERENCES tours(id) ON DELETE CASCADE
+);
+
+
+## TourRequests Schema
+CREATE TABLE tour_requests (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    tourist_id INTEGER NOT NULL,
+    tour_id INTEGER NOT NULL,
+    request_date TEXT DEFAULT CURRENT_DATE,
+    status TEXT DEFAULT 'Pending',
+    FOREIGN KEY (tourist_id) REFERENCES tourists(id) ON DELETE CASCADE,
+    FOREIGN KEY (tour_id) REFERENCES tours(id) ON DELETE CASCADE
+);
+
+
+
+## Quotes Schema
+CREATE TABLE quotes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    tour_request_id INTEGER NOT NULL,
+    operator_id INTEGER NOT NULL,
+    amount REAL CHECK (amount >= 0),
+    notes TEXT,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (tour_request_id) REFERENCES tour_requests(id) ON DELETE CASCADE,
+    FOREIGN KEY (operator_id) REFERENCES operators(id) ON DELETE CASCADE
+);
+
+
+## Vehicles Schema
+CREATE TABLE vehicles (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    operator_id INTEGER NOT NULL,
+    type TEXT NOT NULL,
+    capacity INTEGER CHECK (capacity > 0),
+    plate_number TEXT UNIQUE NOT NULL,
+    FOREIGN KEY (operator_id) REFERENCES operators(id) ON DELETE CASCADE
+);
+
+
+## Stats
+CREATE TABLE stats (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    tour_id INTEGER UNIQUE NOT NULL,
+    total_bookings INTEGER DEFAULT 0 CHECK (total_bookings >= 0),
+    total_revenue REAL DEFAULT 0 CHECK (total_revenue >= 0),
+    last_updated TEXT DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (tour_id) REFERENCES tours(id) ON DELETE CASCADE
+);
+
+

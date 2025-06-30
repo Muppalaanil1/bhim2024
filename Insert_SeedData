@@ -1,0 +1,91 @@
+##Insert Data into roles Table.
+INSERT INTO roles (name) VALUES 
+  ('admin'),
+  ('operator'),
+  ('tourist');
+
+
+##Insert Data into countries Table.
+INSERT INTO countries (name, code) VALUES 
+  ('Kenya', 'KE'),
+  ('Tanzania', 'TZ'),
+  ('South Africa', 'ZA'),
+  ('Botswana', 'BW'),
+  ('Uganda', 'UG');
+
+
+
+##Insert Data into Users Table
+INSERT INTO users (username, email, password_hash, role_id) VALUES
+  ('admin1', 'admin1@safari.com', 'hashed_admin_pw', 1),
+  ('operator1', 'operator1@safari.com', 'hashed_operator_pw', 2),
+  ('operator2', 'operator2@safari.com', 'hashed_operator_pw', 2),
+  ('tourist1', 'tourist1@safari.com', 'hashed_tourist_pw', 3),
+  ('tourist2', 'tourist2@safari.com', 'hashed_tourist_pw', 3),
+  ('tourist3', 'tourist3@safari.com', 'hashed_tourist_pw', 3);
+
+
+
+##Insert Data into operators Table.
+INSERT INTO operators (user_id, company_name, license_number) VALUES
+  (2, 'Wild Trek Safaris Ltd.', 'LIC-OP-001'),
+  (3, 'Savannah Expeditions', 'LIC-OP-002');
+
+
+
+
+##Insert Data into tourists Table.
+INSERT INTO tourists (user_id, first_name, last_name, country) VALUES
+  (4, 'John', 'Doe', 'Kenya'),
+  (5, 'Mary', 'Smith', 'South Africa'),
+  (6, 'Ali', 'Khan', 'Uganda');
+
+
+
+##Insert Data into tours Table.
+INSERT INTO tours (operator_id, name, description, country_id, start_date, end_date, price) VALUES
+  (1, 'Masai Mara Safari', 'Experience the Big Five in Kenya', 1, '2025-07-01', '2025-07-05', 1500.00),
+  (1, 'Serengeti Adventure', 'Great Migration viewing in Tanzania', 2, '2025-08-10', '2025-08-15', 2000.00),
+  (2, 'Okavango Delta Tour', 'Mokoro rides and game viewing in Botswana', 4, '2025-09-01', '2025-09-05', 1800.00);
+
+
+
+##Insert Data into activities Table.
+INSERT INTO activities (tour_id, name, description, activity_date) VALUES
+  (1, 'Morning Game Drive', 'Big cats and elephants', '2025-07-02'),
+  (1, 'Maasai Village Visit', 'Learn about local culture', '2025-07-03'),
+  (2, 'Balloon Safari', 'Aerial view of the migration', '2025-08-11'),
+  (2, 'Evening Sundowner', 'Relax with views of Serengeti', '2025-08-12'),
+  (3, 'Mokoro Canoe Ride', 'Traditional delta exploration', '2025-09-02');
+
+
+##Insert Data into tour_requests Table.
+INSERT INTO tour_requests (tourist_id, tour_id, status) VALUES
+  (1, 1, 'Confirmed'),
+  (2, 2, 'Pending'),
+  (3, 3, 'Pending');
+`
+
+##Insert Data into quotes Table.
+INSERT INTO quotes (tour_request_id, operator_id, amount, notes) VALUES
+  (1, 1, 1500.00, 'All inclusive, 5 days'),
+  (2, 1, 2000.00, 'Special offer for group of 2'),
+  (3, 2, 1800.00, 'Includes mokoro ride and guide');
+
+
+##Insert Data into vehicles Table.
+INSERT INTO vehicles (operator_id, type, capacity, plate_number) VALUES
+  (1, '4x4 Land Cruiser', 6, 'KDJ-001A'),
+  (1, 'Minibus', 8, 'KDJ-002B'),
+  (2, 'Safari Jeep', 4, 'BW-1234'),
+  (2, 'Open Truck', 12, 'BW-5678');
+
+
+##Insert Data into stats Table.
+INSERT INTO stats (tour_id, total_bookings, total_revenue) VALUES
+  (1, 5, 7500.00),
+  (2, 2, 4000.00),
+  (3, 1, 1800.00);
+
+
+

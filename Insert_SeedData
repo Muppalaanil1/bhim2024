@@ -8,11 +8,8 @@ INSERT INTO roles (name) VALUES
 ##Insert Data into countries Table.
 INSERT INTO countries (name, code) VALUES 
   ('Kenya', 'KE'),
-  ('Tanzania', 'TZ'),
-  ('South Africa', 'ZA'),
-  ('Botswana', 'BW'),
-  ('Uganda', 'UG');
-
+  ('Tanzania', 'TZ');
+  
 
 
 ##Insert Data into Users Table

@@ -70,6 +70,3 @@ CREATE TABLE transport_services (
 );
 
 
-
-lokesh@bhaskars-MacBook-Pro db_project % 
-

@@ -1,4 +1,4 @@
-Class OperatorActions:
+class OperatorActions:
    def submit_quote_for_request(self, op_username, op_userpass, tr_id, quote_amount, valid_date):
         self.do_login(op_username, op_userpass)
         self.assert_text("Safari Operator Dashboard", "h1")

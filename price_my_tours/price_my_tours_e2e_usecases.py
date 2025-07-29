@@ -7,13 +7,13 @@ class price_my_tours(BaseCase, LoginActions, TouristActions, OperatorActions):
 ## This is testcase that verified end-to-end flow of tourism application
  def test_e2e_tour_request_flow(self):
        # Open the website
-       self.open("https://zen-pri-my-tou.lovable.app/") 
+       self.open("https://zen-price-my-tours.lovable.app/") 
        print("opening the website")
        self.save_screenshot("zen-price website")
        self.sleep(2)
        '''
         # Click Login and perform login
-        self.do_login('tourt@de.app', 'tourist123')
+        self.do_login('tourist@demo.app', 'tourist@123!')
 
         # tourist --> calling the tour request function
         self.submit_tour_request()
@@ -38,22 +38,22 @@ class price_my_tours(BaseCase, LoginActions, TouristActions, OperatorActions):
        tr_id = 'f46c'
 
        # calling the submit quote function
-       self.submit_quote_for_request("sup_ope@dem.app", "passwd@123", tr_id, 500, '30-07-2025')
+       self.submit_quote_for_request("sup_operator@demo.app", "password@123#", tr_id, 500, '30-07-2025')
 
        # calling the submit quote function
-       self.submit_quote_for_request('ama_ope@dem.app', 'passwd@123', tr_id, 650, '31-07-2025')
+       self.submit_quote_for_request('ama_operator@demo.app', 'password@123#', tr_id, 650, '31-07-2025')
 
        # calling the submit quote function
-       self.submit_quote_for_request("pat_ope@dem.com", "passwd@123", tr_id, 999, '02-08-2025')
+       self.submit_quote_for_request("pat_operator@demo.com", "password@123#", tr_id, 999, '02-08-2025')
 
        # calling the submit quote function
-       self.submit_quote_for_request("loc_ope@la.com", "passwd@123", tr_id, 700, '04-08-2025')
+       self.submit_quote_for_request("loc_operator@lala.com", "password@123#", tr_id, 700, '04-08-2025')
        
        # calling the submit quote function
-       self.submit_quote_for_request("saf_operr@exts.com", "passwd@123", tr_id, 1000, '31-07-2025')
+       self.submit_quote_for_request("saf_operator@experts.com", "password@123#", tr_id, 1000, '31-07-2025')
 
        # Tourist login
-       self.do_login(''tourt@de.app', 'tourist123'')
+       self.do_login(''tourist@demo.app', 'tourist@123!'')
 
        # click on your request
        self.click('[auto-test-id="view-requests-button"]')
@@ -76,7 +76,7 @@ class price_my_tours(BaseCase, LoginActions, TouristActions, OperatorActions):
        self.do_logout('tourist')
 
        # calling the login for operator
-       #self.do_login("sup_ope@de.app", "paord@123")
+       #self.do_login("sup_operator@demo.app", "password@123#")
         
        # click on accepted tab
        #self.click('[auto-test-id="accepted-tab"]')

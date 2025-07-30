@@ -1,6 +1,6 @@
 from login_operations import LoginActions
 from tourist_operations import TouristActions
-from tour_operator_operation import OperatorActions
+from tours_operator_operations import OperatorActions
 from seleniumbase import BaseCase
 class price_my_tours(BaseCase, LoginActions, TouristActions, OperatorActions):
 

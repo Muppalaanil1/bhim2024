@@ -53,7 +53,7 @@ class price_my_tours(BaseCase, LoginActions, TouristActions, OperatorActions):
        self.submit_quote_for_request("saf_operator@experts.com", "password@123#", tr_id, 1000, '31-07-2025')
 
        # Tourist login
-       self.do_login(''tourist@demo.app', 'tourist@123!')
+       self.do_login('tourist@demo.app', 'tourist@123!')
 
        # click on your request
        self.click('[auto-test-id="view-requests-button"]')

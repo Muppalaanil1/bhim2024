@@ -27,6 +27,12 @@ class TouristActions:
         self.assert_text('Afternoon', '[auto-test-id="start-time-select"]')
         #self.save_screenshot("safari details")
 
+        # preferred safari date
+        self.wait_for_element('[auto-test-id="preferred-date-input"]', timeout=10)
+        self.type('[auto-test-id="preferred-date-input"]', '09-08-2025')
+        preferred_date = self.get_value('[auto-test-id="preferred-date-input"]')
+        print("preferred_safari_date:", preferred_date)
+
         ## select Transportation
         self.click('button[role="combobox"]:contains("Vehicle")')
         self.wait_for_element('div[role="option"]:contains("Safari Minibus")')

@@ -35,7 +35,7 @@ class price_my_tours(BaseCase, LoginActions, TouristActions, OperatorActions):
         # calling the logout for tourist
         self.do_logout('tourist')
        '''
-       tr_id = 'f46c'
+       tr_id = 'eb0f'
 
        # calling the submit quote function
        self.submit_quote_for_request("sup_operator@demo.app", "password@123#", tr_id, 500, '30-07-2025')

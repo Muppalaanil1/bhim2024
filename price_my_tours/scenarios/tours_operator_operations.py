@@ -32,7 +32,9 @@ class OperatorActions:
    
    def quote_tabs(self):
        # click on accept quote
-       self.scroll_to('button:contains("Accept Quote")')
+       self.wait_for_element('button[role="checkbox"][aria-checked="false"]', timeout=10)
+       self.scroll_to('button[role="checkbox"][aria-checked="false"]')
+       self.click('button[role="checkbox"][aria-checked="false"]')
        self.click('button:contains("Accept Quote")')
        self.sleep(3)
        

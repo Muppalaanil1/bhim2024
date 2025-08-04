@@ -29,7 +29,7 @@ class TouristActions:
 
         # preferred safari date
         self.wait_for_element('[auto-test-id="preferred-date-input"]', timeout=10)
-        self.type('[auto-test-id="preferred-date-input"]', '09-08-2025')
+        self.type('[auto-test-id="preferred-date-input"]', '10-08-2025')
         preferred_date = self.get_value('[auto-test-id="preferred-date-input"]')
         print("preferred_safari_date:", preferred_date)
 

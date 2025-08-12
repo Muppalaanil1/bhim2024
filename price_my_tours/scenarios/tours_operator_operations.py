@@ -17,7 +17,6 @@ class OperatorActions:
         ## Enter price
         self.type('input[placeholder="500"]', "100")
 
-
         ## select What's Included
         self.click('[auto-test-id="undefined-option-transport"]')
         self.click('[auto-test-id="undefined-option-all-meals"]')

@@ -2,63 +2,117 @@ class TouristActions:
    def submit_tour_request(self):    
         self.click('button:contains("Request Custom Tour")')
         print("click request custom tour to make request custom safari quote")
-        #self.save_screenshot("tourist page")
+        
+        ## Destination country
+        self.click('button[data-testid="destination-country-select"]')
+        self.click('//div[@role="option" and normalize-space(.)="Kenya"]')
+        self.assert_text("Kenya", 'button[data-testid="destination-country-select"] span')
+        
+        ## Number of travelers
+        self.click('button[data-testid="number-of-travelers-select"]')
+        self.click('//div[@role="option" and normalize-space(.)="3 travelers"]')
+        self.assert_text("3 travelers", 'button[data-testid="number-of-travelers-select"] span')
 
-        ## select Safari Experience
-        self.click('[auto-test-id="activity-type-select"]')
-        self.click("//div[@role='option' and contains(., 'Mountain Climbing (Kilimanjaro)')]")
+        ## preferred tour date
+        self.type('input[type="date"]', "23-08-2025")
 
-        ## select Number of Travelers
-        self.clear('[auto-test-id="guests-input"]')
-        self.type('[auto-test-id="guests-input"]', '4')
+        ## tour duration
+        self.click('button[data-testid="tour-duration-select"]')
+        self.click('//div[@role="option" and normalize-space(.)="3 days"]')
+        self.assert_text("3 days", 'button[data-testid="tour-duration-select"] span')
+      
+        ## Day1
+        ## origin city
+        self.click('button[data-testid="day-1-destination-autocomplete"]')
+        self.click('//div[@role="option" and contains(normalize-space(.), "Samburu")]')
+        
+        ## Time of day
+        self.click('button[data-testid="day-1-time-of-day-select"]')
+        self.click('//div[@role="option" and contains(normalize-space(.),"Evening")]')
+        self.assert_text("Evening", 'button[data-testid="day-1-time-of-day-select"] span')
 
-        ## select Safari Duration
-        self.clear('[auto-test-id="number-of-days-input"]')
-        self.type('[auto-test-id="number-of-days-input"]', '2')
+        ## Activity
+        self.click('button[data-testid="day-1-activity-select"]')
+        self.click('//div[@role="option" and contains(normalize-space(.),"Cultural Tours")]')
+        self.assert_text("Cultural Tours", 'button[data-testid="day-1-activity-select"] span')
 
-        ## select Destination Country
-        self.click('[auto-test-id="country-select"]')
-        self.click("//div[@role='option' and contains(., 'Kenya')]")
-        self.assert_text('Kenya', '[auto-test-id="country-select"]')
+        ## Accommodation
+        self.click('button[data-testid="day-1-accommodation-select"]')
+        self.click('//div[@role="option" and contains(normalize-space(.),"Camping")]')
+        self.assert_text("Camping", 'button[data-testid="day-1-accommodation-select"] span')
+        
+        ## Transport
+        self.click('button[data-testid="day-1-transport-select"]')
+        self.click('//div[@role="option" and contains(normalize-space(.),"Boat")]')
+        self.assert_text("Boat", 'button[data-testid="day-1-transport-select"] span')
+        
+        ## Notes
+        self.type('textarea[data-testid="day-1-notes-textarea"]', "this for a dinner")
+        self.assert_text("this for a dinner", 'textarea[data-testid="day-1-notes-textarea"]')
 
-        ## select Preferred Start Time
-        self.click('[auto-test-id="start-time-select"]')
-        self.click("//div[@role='option' and contains(., 'Afternoon')]")
-        self.assert_text('Afternoon', '[auto-test-id="start-time-select"]')
-        #self.save_screenshot("safari details")
+        
+        ## Day2
+        self.click('button:contains("Day 2")')
+        
+        ## origin city
+        self.click('button[data-testid="day-2-destination-autocomplete"]')
+        self.click('//div[@role="option" and contains(normalize-space(.), "Amboseli")]')
+      
+        ## Time of day
+        self.click('button[data-testid="day-2-time-of-day-select"]')
+        self.click('//div[@role="option" and contains(normalize-space(.),"Afternoon")]')
+        self.assert_text("Afternoon", 'button[data-testid="day-2-time-of-day-select"] span')
 
-        # preferred safari date
-        self.wait_for_element('[auto-test-id="preferred-date-input"]', timeout=10)
-        self.type('[auto-test-id="preferred-date-input"]', '10-08-2025')
-        preferred_date = self.get_value('[auto-test-id="preferred-date-input"]')
-        print("preferred_safari_date:", preferred_date)
+        ## Activity
+        self.click('button[data-testid="day-2-activity-select"]')
+        self.click('//div[@role="option" and contains(normalize-space(.),"Walking Safari")]')
+        self.assert_text("Walking Safari", 'button[data-testid="day-2-activity-select"] span')
 
-        ## select Transportation
-        self.click('button[role="combobox"]:contains("Vehicle")')
-        self.wait_for_element('div[role="option"]:contains("Safari Minibus")')
-        self.click('div[role="option"]:contains("Safari Minibus")')
+        ## Accommodation
+        self.click('button[data-testid="day-2-accommodation-select"]')
+        self.click('//div[@role="option" and contains(normalize-space(.),"Luxury Lodge")]')
+        self.assert_text("Luxury Lodge", 'button[data-testid="day-2-accommodation-select"] span')
+        
+        ## Transport
+        self.click('button[data-testid="day-2-transport-select"]')
+        self.click('//div[@role="option" and contains(normalize-space(.),"Train")]')
+        self.assert_text("Train", 'button[data-testid="day-2-transport-select"] span')
+        
+        ## Notes
+        self.type('textarea[data-testid="day-2-notes-textarea"]', "this for a meeting with friends")
+        self.assert_text("this for a meeting with friends", 'textarea[data-testid="day-2-notes-textarea"]')
 
-        ## select Accommodation
-        self.click('button[role="combobox"]:contains("Lodge")')
-        self.wait_for_element('div[role="option"]:contains("Mid-range Lodge")')
-        self.click('div[role="option"]:contains("Mid-range Lodge")')
+        ## Day 3
+        self.click('button:contains("Day 3")')
 
-        ## select Meal Plan
-        self.click('button[role="combobox"]:contains("Board")')
-        self.wait_for_element('div[role="option"]:contains("No Meals")')
-        self.click('div[role="option"]:contains("No Meals")')
+        ## origin city
+        self.click('button[data-testid="day-3-destination-autocomplete"]')
+        self.click('//div[@role="option" and contains(normalize-space(.), "Masai Mara")]')
+       
+        ## Time of day
+        self.click('button[data-testid="day-3-time-of-day-select"]')
+        self.click('//div[@role="option" and contains(normalize-space(.),"Evening")]')
+        self.assert_text("Evening", 'button[data-testid="day-3-time-of-day-select"] span')
 
-        ## select Travelers This Day
-        self.wait_for_element('input[type="number"]')
-        self.clear('input[type="number"]')
-        self.type('input[type="number"]', '2')
+        ## Activity
+        self.click('button[data-testid="day-3-activity-select"]')
+        self.click('//div[@role="option" and contains(normalize-space(.),"Night Game Drive")]')
+        self.assert_text("Night Game Drive", 'button[data-testid="day-3-activity-select"] span')
 
-        ## select Special Requests for Day 1
-        self.wait_for_element('textarea[placeholder*="special activities"]')
-        self.type('textarea[placeholder*="special activities"]', "for a meeting with friends")
-        self.type('textarea#comments', "Explore more in kenya")
-        self.sleep(3)
-        #self.save_screenshot("day by day safari")
+        ## Accommodation
+        self.click('button[data-testid="day-3-accommodation-select"]')
+        self.click('//div[@role="option" and contains(normalize-space(.),"Resort")]')
+        self.assert_text("Resort", 'button[data-testid="day-3-accommodation-select"] span')
+        
+        ## Transport
+        self.click('button[data-testid="day-3-transport-select"]')
+        self.click('//div[@role="option" and contains(normalize-space(.),"Minibus")]')
+        self.assert_text("Minibus", 'button[data-testid="day-3-transport-select"] span')
+        
+        ## Notes
+        self.type('textarea[data-testid="day-3-notes-textarea"]', "this for a breakfast")
+        self.assert_text("this for a breakfast", 'textarea[data-testid="day-3-notes-textarea"]')
 
-        ## click on your request
-        self.click('button[type="submit"][auto-test-id="tour-request-submit-button"]')
+        # submit tour request button
+        self.click('button[data-testid="submit-tour-request-btn"]')
+        

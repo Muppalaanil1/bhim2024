@@ -20,6 +20,9 @@ class price_my_tours(BaseCase, LoginActions, TouristActions, OperatorActions):
       self.click('[auto-test-id="view-requests-button"]')
       #self.save_screenshot("your requests")
       self.sleep(4)
+     
+      # click all tab
+      self.click("button[auto-test-id='all-requests-tab']")
 
       # activity title 
       activity_title = self.get_text('[auto-test-id="request-activity-title"]')
@@ -35,7 +38,7 @@ class price_my_tours(BaseCase, LoginActions, TouristActions, OperatorActions):
       self.do_logout('tourist')
       
       # calling the submit quote function
-      self.submit_quote_for_request("saf_operator@experts.com", "password@123#", tr_id, '09-08-2025')
+      self.submit_quote_for_request("saf_operator@experts.com", "password@123#", tr_id, '20-08-2025')
 
       # Tourist login
       self.do_login('tourist@demo.app', 'tourist@123!')
@@ -44,6 +47,9 @@ class price_my_tours(BaseCase, LoginActions, TouristActions, OperatorActions):
       self.click('[auto-test-id="view-requests-button"]')
       print("your requests dispaly successful")
       self.sleep(3)
+
+      # click all tab
+      self.click("button[auto-test-id='all-requests-tab']")
 
       # click on eye icon button
       self.click('[auto-test-id="view-request-button"]')

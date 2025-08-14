@@ -20,6 +20,7 @@ class TouristActions:
         self.click('button[data-testid="tour-duration-select"]')
         self.click('//div[@role="option" and normalize-space(.)="3 days"]')
         self.assert_text("3 days", 'button[data-testid="tour-duration-select"] span')
+        print("enter basic information details")
       
         ## Day1
         ## origin city
@@ -49,6 +50,7 @@ class TouristActions:
         ## Notes
         self.type('textarea[data-testid="day-1-notes-textarea"]', "this for a dinner")
         self.assert_text("this for a dinner", 'textarea[data-testid="day-1-notes-textarea"]')
+        print("enter day 1 information details")
 
         
         ## Day2
@@ -81,6 +83,7 @@ class TouristActions:
         ## Notes
         self.type('textarea[data-testid="day-2-notes-textarea"]', "this for a meeting with friends")
         self.assert_text("this for a meeting with friends", 'textarea[data-testid="day-2-notes-textarea"]')
+        print("enter day 2 information details")
 
         ## Day 3
         self.click('button:contains("Day 3")')
@@ -112,7 +115,8 @@ class TouristActions:
         ## Notes
         self.type('textarea[data-testid="day-3-notes-textarea"]', "this for a breakfast")
         self.assert_text("this for a breakfast", 'textarea[data-testid="day-3-notes-textarea"]')
+        print("enter day 3 information details")
 
         # submit tour request button
         self.click('button[data-testid="submit-tour-request-btn"]')
-        
+        print("click submit tour request")

@@ -18,8 +18,8 @@ class price_my_tours(BaseCase, LoginActions, TouristActions, OperatorActions):
         
       # click on your requests
       self.click('[auto-test-id="view-requests-button"]')
-      #self.save_screenshot("your requests")
       self.sleep(4)
+      print("click on your request")
      
       # click all tab
       self.click("button[auto-test-id='all-requests-tab']")
@@ -54,6 +54,7 @@ class price_my_tours(BaseCase, LoginActions, TouristActions, OperatorActions):
       # click on eye icon button
       self.click('[auto-test-id="view-request-button"]')
       self.sleep(4)
+      print("open eye icon scroll down click check box and accepct")
         
       # click on accept quote
       self.quote_tabs()

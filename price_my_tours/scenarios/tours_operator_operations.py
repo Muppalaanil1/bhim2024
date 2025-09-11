@@ -14,7 +14,7 @@ class OperatorActions:
         
         ## Enter valid date
         self.click("button[auto-test-id='quote-valid-until-input']")
-        self.click("//button[normalize-space()='12']")
+        self.click("//button[normalize-space()='22']")
         ## Day 1
         ## Enter price
         self.type("input[data-testid='day-1-price-input']", "100")

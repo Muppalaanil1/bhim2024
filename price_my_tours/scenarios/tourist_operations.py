@@ -14,7 +14,7 @@ class TouristActions:
         self.assert_text("3 travelers", 'button[data-testid="number-of-travelers-select"] span')
 
         ## preferred tour date
-        self.type('input[type="date"]', "09-09-2025")
+        self.type('input[type="date"]', "20-09-2025")
 
         ## tour duration
         self.click('button[data-testid="tour-duration-select"]')
